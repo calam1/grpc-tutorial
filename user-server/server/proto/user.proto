@@ -1,0 +1,40 @@
+syntax= "proto3";
+
+message User {
+	int64 id = 1;
+	string firstName = 2;
+	string lastName = 3;
+	string address = 4;
+}
+
+message CreateUserRequest {
+	User user = 1;
+}
+
+message CreateUserResponse {
+	int64 id = 1;
+}
+
+message ReadUserRequest {
+	int64 id = 1;
+}
+
+message ReadUserResponse {
+	User user = 1;
+}
+
+message DeleteUserRequest {
+	int64 id = 1;
+}
+
+message DeleteUserResponse {
+	int64 rowsDeleted = 1;
+}
+
+service UserService {
+	rpc Create(CreateUserRequest) returns (CreateUserResponse);
+
+	rpc Read(ReadUserRequest) returns (ReadUserResponse);
+
+	rpc Delete(DeleteUserRequest) returns (DeleteUserResponse);
+}
